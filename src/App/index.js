@@ -1,38 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import firebase from 'firebase';
+import firebaseConfig from '../Helpers/Data/apiKeys';
+import AuthorForm from '../AuthorForm';
+import BookForm from '../BookForm';
 import './App.scss';
 
 function App() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
-
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
-  };
-
+  firebase.initializeApp(firebaseConfig);
   return (
     <div className='App'>
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          id='this-button'
-          className='btn btn-info'
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
-      </div>
-      <div>
-        <button
-          id='that-button'
-          className='btn btn-primary mt-3'
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
+      <AuthorForm formTitle="New Author"/>
+      <hr/>
+      <BookForm formTitle="New Book"/>
     </div>
   );
 }
-
 export default App;
