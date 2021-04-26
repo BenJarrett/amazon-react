@@ -3,8 +3,8 @@ import addAuthor from './Helpers/Data/authorData';
 
 export default function AuthorForm() {
   const [author, setAuthor] = useState({
-    name: '',
-    book: ''
+    author_name: '',
+    author_book: ''
   });
   const handleInputChange = (e) => {
     setAuthor((prevState) => ({
@@ -27,11 +27,11 @@ export default function AuthorForm() {
     onSubmit={handleSubmit}
     >
     <h2>New Author</h2>
-    <label>Author Name: </label>
+    <label> Author Name: </label>
     <input
     name='author_name'
     type='text'
-    placeholder='Name'
+    placeholder='Enter Name'
     value={author.name}
     onChange={handleInputChange}
     ></input>
