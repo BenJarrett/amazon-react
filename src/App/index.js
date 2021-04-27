@@ -1,18 +1,33 @@
-import React from 'react';
-import firebase from 'firebase';
-import firebaseConfig from '../Helpers/Data/apiKeys';
+import React, { useEffect, useState } from 'react';
+import AuthorCard from '../AuthorCard';
+import { getAuthors } from '../Helpers/Data/authorData';
 import AuthorForm from '../AuthorForm';
-import BookForm from '../BookForm';
-import './App.scss';
 
 function App() {
-  firebase.initializeApp(firebaseConfig);
+  const [authors, setAuthors] = useState([]);
+  useEffect(() => {
+    getAuthors().then((resp) => setAuthors(resp));
+  }, []);
   return (
-    <div className='App'>
-      <AuthorForm formTitle="New Author"/>
+    <>
+      <AuthorForm
+      formTitle='Add Author'
+      setAuthors={setAuthors}
+      />
       <hr/>
-      <BookForm formTitle="New Book"/>
-    </div>
+      <div className="card-container">
+        {authors.map((authorInfo) => (
+          <AuthorCard
+            key={authorInfo.firebaseKey}
+            firebaseKey={authorInfo.firebaseKey}
+            first_name={authorInfo.first_name}
+            last_name={authorInfo.last_name}
+            email={authorInfo.email}
+            setAuthors={setAuthors}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 export default App;

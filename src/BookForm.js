@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import addBook from './Helpers/Data/authorData';
+import addBook from './Helpers/Data/bookData';
 
 export default function BookForm() {
   const [book, setBook] = useState({
-    book_name: '',
-    author_name: ''
+    book_title: '',
+    book_price: ''
   });
   const handleInputChange = (e) => {
     setBook((prevState) => ({
@@ -33,6 +33,14 @@ export default function BookForm() {
     type='text'
     placeholder='Add A Book'
     value={book.title}
+    onChange={handleInputChange}
+    ></input>
+        <br/>
+    <input
+    name='book_price'
+    type='text'
+    placeholder='Assign A Price'
+    value={book.price}
     onChange={handleInputChange}
     ></input>
         <br/>
