@@ -16,6 +16,7 @@ const AuthorCard = ({
   first_name,
   // eslint-disable-next-line camelcase
   last_name,
+  email,
   setAuthors,
 }) => {
   const [editing, setEditing] = useState(false);
@@ -38,6 +39,7 @@ const AuthorCard = ({
       <CardTitle tag="h5">{first_name}</CardTitle>
       {/* // eslint-disable-next-line camelcase */}
       <CardText>{last_name}</CardText>
+      <CardText>{email}</CardText>
       <Button color="danger" onClick={() => handleClick('delete')}>Delete Author</Button>
       <br/>
       <Button color="info" onClick={() => handleClick('edit')}>{editing ? 'Close Form' : 'Edit Author'}
@@ -50,6 +52,7 @@ const AuthorCard = ({
         firebaseKey={firebaseKey}
         first_name={first_name}
         last_name={last_name}
+        email={email}
        />
        }
     </Card>
@@ -60,6 +63,7 @@ AuthorCard.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   first_name: PropTypes.string.isRequired,
   last_name: PropTypes.string.isRequired,
+  email: PropTypes.string,
   setAuthors: PropTypes.func
 };
 export default AuthorCard;

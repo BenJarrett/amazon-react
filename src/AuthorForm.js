@@ -12,13 +12,16 @@ const AuthorForm = ({
   first_name,
   // eslint-disable-next-line camelcase
   last_name,
-  firebaseKey
+  firebaseKey,
+  email
+
 }) => {
   const [author, setAuthor] = useState({
     // eslint-disable-next-line camelcase
     first_name: first_name || '',
     // eslint-disable-next-line camelcase
     last_name: last_name || '',
+    email: email || '',
     firebaseKey: firebaseKey || null,
   });
 
@@ -67,6 +70,17 @@ const AuthorForm = ({
             onChange={handleInputChange}
           />
         </FormGroup>
+        <FormGroup>Author Email
+          <Label for="email">Email</Label>
+          <Input
+            name='email'
+            id='email'
+            value={author.email}
+            type='text'
+            placeholder='Enter Author Email'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
         <Button type='submit'>Submit</Button>
       </Form>
     </div>
@@ -77,6 +91,7 @@ AuthorForm.propTypes = {
   setAuthors: PropTypes.func,
   first_name: PropTypes.string,
   last_name: PropTypes.string,
+  email: PropTypes.string,
   firebaseKey: PropTypes.string
 };
 

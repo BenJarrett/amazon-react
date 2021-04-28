@@ -25,7 +25,7 @@ function App() {
             email={authorInfo.email}
             setAuthors={setAuthors}
           />
-        ))}
+        ))};
       </div>
     </>
   );
